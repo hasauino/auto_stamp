@@ -15,6 +15,7 @@ class StampBot:
         self.stamp_path = None
         self.stamp = None
         self.ready = False
+        self.print = None
 
     @staticmethod
     def add_stamp(doc, stamp, stamp_ratio=0.2, step_ratio=0.1):
@@ -59,7 +60,7 @@ class StampBot:
         try:
             files = listdir(self.docs_dir)
         except FileNotFoundError as e:
-            print(e)
+            self.print(e)
             sys.exit()
 
         out_dir = self.docs_dir+"/out_docs"
@@ -67,7 +68,7 @@ class StampBot:
             mkdir(out_dir)
 
         if not path.exists("stamp.png"):
-            print("Couldn't find stamp image (stamp.png)")
+            self.print("Couldn't find stamp image (stamp.png)")
             sys.exit()
 
         stamp = cv2.imread(self.stamp_path)
@@ -86,7 +87,7 @@ class StampBot:
                 stamped_pages.append(page)
             stamped_pages[0].save(out_dir+"/"+file[:-4]+".pdf", save_all=True,
                                   append_images=stamped_pages[1:])
-            print("stammped file:   ",
-                  i+1, "  progress: ",
+            self.print("stammped file: ",
+                  i+1, " progress: ",
                   (i+1.0)/len(files)*100.0, "%")
-        print("done")
+        self.print("done")
