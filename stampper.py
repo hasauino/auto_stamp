@@ -67,7 +67,7 @@ class StampBot:
         if not path.exists(out_dir):
             mkdir(out_dir)
 
-        if not path.exists("stamp.png"):
+        if not path.exists(self.stamp_path):
             self.print("Couldn't find stamp image (stamp.png)")
             sys.exit()
 
