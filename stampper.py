@@ -3,7 +3,7 @@ import numpy as np
 import sys
 from pdf2image import convert_from_path
 from os import listdir
-from PIL import Image
+from PIL import Image, ImageTk
 from os import mkdir, path
 
 
@@ -81,7 +81,7 @@ class StampBot:
             for page in pages:
                 doc = np.array(page)
                 doc = cv2.cvtColor(doc, cv2.COLOR_BGR2RGB)
-                doc = self.add_stamp(doc, stamp)
+                doc = self.add_stamp(doc, stamp, stamp_ratio=self.stamp_ratio)
                 doc = cv2.cvtColor(doc, cv2.COLOR_RGB2BGR)
                 page = Image.fromarray(doc)
                 stamped_pages.append(page)
@@ -91,3 +91,27 @@ class StampBot:
                   i+1, " progress: ",
                   (i+1.0)/len(files)*100.0, "%")
         self.print("done")
+
+    def preview(self):
+        try:
+            files = listdir(self.docs_dir)
+        except FileNotFoundError as e:
+            self.print(e)
+            sys.exit()
+        if not path.exists(self.stamp_path):
+            self.print("Couldn't find stamp image (stamp.png)")
+            sys.exit()
+        stamp = cv2.imread(self.stamp_path)
+        ratio = stamp.shape[1]/stamp.shape[0]
+        for i, file in enumerate(files):
+            if file[-3:].lower() != "pdf":
+                continue
+            page = convert_from_path(self.docs_dir+'/'+file, dpi=400)[0]
+            doc = np.array(page)
+            doc = cv2.cvtColor(doc, cv2.COLOR_BGR2RGB)
+            doc = self.add_stamp(doc, stamp, stamp_ratio=self.stamp_ratio)
+            doc = cv2.cvtColor(doc, cv2.COLOR_RGB2BGR)
+            page = Image.fromarray(doc)
+            size = 400
+            page = page.resize((size, int(size*ratio)))
+            return ImageTk.PhotoImage(page)
