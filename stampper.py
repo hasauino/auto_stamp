@@ -25,7 +25,7 @@ class StampBot:
         r = np.sqrt((doc_rows)**2 + (doc_col)**2)*stamp_ratio
         new_col = np.sqrt(r**2 / (k**2 + 1))
         new_row = k*new_col
-        new_size = (int(new_row), int(new_col))
+        new_size = (int(new_col), int(new_row))
         stamp = cv2.resize(stamp, new_size, cv2.INTER_AREA)
         stamp_rows, stamp_cols, _ = stamp.shape
         gray = cv2.cvtColor(stamp, cv2.COLOR_BGR2GRAY)
@@ -102,16 +102,16 @@ class StampBot:
             self.print("Couldn't find stamp image (stamp.png)")
             sys.exit()
         stamp = cv2.imread(self.stamp_path)
-        ratio = stamp.shape[1]/stamp.shape[0]
         for i, file in enumerate(files):
             if file[-3:].lower() != "pdf":
                 continue
             page = convert_from_path(self.docs_dir+'/'+file, dpi=400)[0]
             doc = np.array(page)
             doc = cv2.cvtColor(doc, cv2.COLOR_BGR2RGB)
+            ratio = doc.shape[1]/doc.shape[0]
             doc = self.add_stamp(doc, stamp, stamp_ratio=self.stamp_ratio)
             doc = cv2.cvtColor(doc, cv2.COLOR_RGB2BGR)
             page = Image.fromarray(doc)
-            size = 400
-            page = page.resize((size, int(size*ratio)))
+            size = 600
+            page = page.resize((int(size*ratio), size))
             return ImageTk.PhotoImage(page)
