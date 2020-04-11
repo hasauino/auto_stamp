@@ -26,6 +26,6 @@ This tool is useful when you have large number of documents you need to stamp:
 
 - Place your documents inside a folder.
 - Run the AutoStamp tool. You can scale the stamp, the preview button shows how the stamp will look like.
-- Wait until all documents are stamped :happy: .
+- Wait until all documents are stamped :happy:
 
 <img src="doc/imgs/howto.gif" alt="how to" style="zoom:50%;" />
