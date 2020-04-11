@@ -1,5 +1,7 @@
-/docs/
-*.png
+docs/
+out_docs/
+sample.pdf
+stamp.png
 
 # helpers
 __pycache__
@@ -29,3 +31,4 @@ wheels/
 *.egg
 *.dump
 *.spec
+
