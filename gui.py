@@ -7,6 +7,7 @@ from stampper import StampBot
 import threading
 from ttkthemes import ThemedTk
 
+
 def stamp_chooser_event():
     text = stamp_path_field.get()
     selected = askopenfilename()
@@ -40,6 +41,7 @@ def preview():
     img = bot.preview()
     panel.configure(image=img)
     panel.image = img
+
 
 def _print(*argv):
     for arg in argv:
@@ -98,7 +100,7 @@ dir_browse.grid(column=1, row=2, padx=10)
 # scale
 scale_label = ttk.Label(scale_frame, text="scale stamp:")
 scale_label.grid(column=0, row=0)
-scale = ttk.Scale(scale_frame, from_=0.05, to=0.4)
+scale = ttk.Scale(scale_frame, from_=0.05, to=0.4, length=300)
 scale.set(0.2)
 scale.grid(column=1, row=0, padx=10)
 
@@ -116,10 +118,9 @@ text["fg"] = "green"
 
 # preview
 preview_btn = ttk.Button(buttons_frame, text="Preview >>",
-                    command=preview, width=20)
+                         command=preview, width=20)
 preview_btn.grid(column=1, row=0, padx=10, pady=10)
 panel = ttk.Label(right, text="")
 panel.pack()
-
 
 root.mainloop()
