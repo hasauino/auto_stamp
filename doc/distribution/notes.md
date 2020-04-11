@@ -22,4 +22,5 @@ There is a `nsi` script which packages `poppler` and do the required things, loo
 
 - Used [NSIS](https://nsis.sourceforge.io/Main_Page), the `nsi` script is in this directory: [nsis_script.nsi](nsis_script.nsi)
 - There is a plug in you need for setting `PATH` environment variable: [EnVar plug-in](https://nsis.sourceforge.io/EnVar_plug-in).
+- Download `poppler` and put it in the same directory as the `nsi` script alongside the `AutoStamp.exe` (exe must be renamed).
 
