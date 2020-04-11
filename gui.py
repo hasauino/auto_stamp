@@ -52,7 +52,7 @@ def _print(*argv):
 
 bot = StampBot()
 root = ThemedTk(theme="arc")
-root.geometry('900x650')
+root.geometry('950x700')
 root.title("MENA auto stamp tool")
 root.configure(bg='#f5f6f7')
 
