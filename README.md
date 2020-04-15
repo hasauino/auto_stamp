@@ -1,5 +1,5 @@
 # auto_stamp
-Auto Stamp is a desktop application that can be used to stamp all `pdf` documents in a chosen folder, using a chosen stamp image.
+Auto Stamp is a desktop application that can be used to stamp all documents in a chosen folder, using a chosen stamp image.
 
 <img src="doc/imgs/overview.png" alt="overview" style="zoom:50%;" />
 
@@ -9,7 +9,7 @@ Auto Stamp is a desktop application that can be used to stamp all `pdf` document
 - [x] Stamp scaling.
 - [x] Auto placement of stamp, it finds a suitable place to put the stamp on.
 - [x] Preview panel to help user adjust the scale of the stamp.
-- [x] Support most common image formats and `pdf` files. 
+- [x] Supported document formats: `pdf`, `bmp`, `dib`, `jpeg`, `jpg`, `jpe`, `jp2`, `png`, `webp`, `pbm`, `pgm`, `ppm`, `pxm`, `pnm`,`pfm`, `sr`, `ras`, `tiff`, `tif`, `exr`, `hdr`, `pic`.
 
 # Installation
 
