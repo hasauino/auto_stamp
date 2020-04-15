@@ -8,6 +8,7 @@ import threading
 from ttkthemes import ThemedTk
 from msgs import error_msgs as err
 from msgs import log_msgs as log
+import os
 
 
 def stamp_chooser_event():
@@ -60,7 +61,9 @@ root = ThemedTk(theme="arc")
 root.geometry('1500x700')
 root.title("Auto Stamp Tool")
 root.configure(bg='#f5f6f7')
-
+sp = os.path.realpath(__file__)[:-len(__file__)+1]
+imgicon = tk.PhotoImage('icon.svg')
+root.tk.call('wm', 'iconphoto', root._w, imgicon)
 left = ttk.Frame(root)
 left.grid(column=0, row=0)
 
