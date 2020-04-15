@@ -6,6 +6,8 @@ from tkinter.filedialog import askopenfilename, askdirectory
 from stampper import StampBot
 import threading
 from ttkthemes import ThemedTk
+from msgs import error_msgs as err
+from msgs import log_msgs as log
 
 
 def stamp_chooser_event():
@@ -25,22 +27,25 @@ def dir_chooser_event():
 
 
 def run():
+    text.delete(1.0, tk.END)
     bot.stamp_ratio = float(scale.get())
     bot.stamp_path = stamp_path_field.get()
     bot.docs_dir = dir_field.get()
     bot.print = _print
+    bot.print(log.START_RUN)
     t1 = threading.Thread(target=bot.stamp_all, args=[])
     t1.start()
 
 
 def preview():
+    text.delete(1.0, tk.END)
     bot.stamp_ratio = float(scale.get())
     bot.stamp_path = stamp_path_field.get()
     bot.docs_dir = dir_field.get()
     bot.print = _print
-    img = bot.preview()
-    panel.configure(image=img)
-    panel.image = img
+    preview_thread = threading.Thread(target=bot.preview, args=[panel])
+    preview_thread.start()
+    bot.print(log.START_PREVIEW)
 
 
 def _print(*argv):
@@ -52,8 +57,8 @@ def _print(*argv):
 
 bot = StampBot()
 root = ThemedTk(theme="arc")
-root.geometry('950x700')
-root.title("MENA auto stamp tool")
+root.geometry('1500x700')
+root.title("Auto Stamp Tool")
 root.configure(bg='#f5f6f7')
 
 left = ttk.Frame(root)
@@ -117,7 +122,7 @@ text["bg"] = "black"
 text["fg"] = "green"
 
 # preview
-preview_btn = ttk.Button(buttons_frame, text="Preview >>",
+preview_btn = ttk.Button(buttons_frame, text="Random Preview >>",
                          command=preview, width=20)
 preview_btn.grid(column=1, row=0, padx=10, pady=10)
 panel = ttk.Label(right, text="")
