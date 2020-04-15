@@ -14,11 +14,11 @@ Auto Stamp is a desktop application that can be used to stamp all `pdf` document
 
 ## Windows
 
-- Download the [installer](https://github.com/hasauino/auto_stamp/releases/download/v0.0.1/windows_installer.exe). :warning: Run it as administrator. 
+- Download the [installer](https://github.com/hasauino/auto_stamp/releases/download/v0.0.2/AutoStamp_win_installer.exe).
 
 ## Ubuntu
 
-- Download the [executable (binary)](https://github.com/hasauino/auto_stamp/releases/download/v0.0.1/AutoStamp_ubuntu) file.
+- Download the [executable (binary)](https://github.com/hasauino/auto_stamp/releases/download/v0.0.2/AutoStamp_ubuntu) file.
 
 # How to use
 

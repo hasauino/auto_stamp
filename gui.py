@@ -9,6 +9,7 @@ from ttkthemes import ThemedTk
 from msgs import error_msgs as err
 from msgs import log_msgs as log
 import os
+from sys import platform
 
 
 def stamp_chooser_event():
@@ -61,8 +62,9 @@ root = ThemedTk(theme="arc")
 root.geometry('1500x700')
 root.title("Auto Stamp Tool")
 root.configure(bg='#f5f6f7')
-dir_path = os.path.dirname(os.path.realpath(__file__))
-root.wm_iconbitmap(dir_path+'/icon.ico')
+if platform == "win32":
+    dir_path = os.path.dirname(os.path.realpath(__file__))
+    root.wm_iconbitmap(dir_path+'/icon.ico')
 left = ttk.Frame(root)
 left.grid(column=0, row=0)
 
