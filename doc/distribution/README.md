@@ -5,7 +5,7 @@
 #### PyInstaller
 
 ```bash
-pyinstaller --onefile gui.py --hidden-import='pkg_resources.py2_warn' --hidden-import='PIL._tkinter_finder'
+pyinstaller.exe --onefile --windowed --name AutoStamp --icon=icon.ico gui.py --hidden-import='pkg_resources.py2_warn' --hidden-import='PIL._tkinter_finder'
 ```
 
 

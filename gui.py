@@ -61,9 +61,8 @@ root = ThemedTk(theme="arc")
 root.geometry('1500x700')
 root.title("Auto Stamp Tool")
 root.configure(bg='#f5f6f7')
-sp = os.path.realpath(__file__)[:-len(__file__)+1]
-imgicon = tk.PhotoImage('icon.svg')
-root.tk.call('wm', 'iconphoto', root._w, imgicon)
+dir_path = os.path.dirname(os.path.realpath(__file__))
+root.wm_iconbitmap(dir_path+'/icon.ico')
 left = ttk.Frame(root)
 left.grid(column=0, row=0)
 
