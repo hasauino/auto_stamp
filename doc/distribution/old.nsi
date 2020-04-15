@@ -26,8 +26,7 @@ Section
     File /nonfatal /a /r "poppler\"
 
     SetOutPath $INSTDIR
-    File AutoStamp.exe
-    File icon.ico
+    File /nonfatal /a /r "AutoStamp\"
     # create the uninstaller
     WriteUninstaller "$INSTDIR\uninstall.exe"
  
@@ -35,6 +34,11 @@ Section
     # point the new shortcut at the program uninstaller
     #CreateShortCut "$SMPROGRAMS\AutoStamp.lnk" "$INSTDIR\uninstall.exe"
     CreateShortCut "$DESKTOP\AutoStamp.lnk" "$INSTDIR\AutoStamp.exe" "" "$INSTDIR\icon.ico" 0
+
+    WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\AutoStamp" \
+                    "AutoStamp" "AutoStamp -- stamp you documents faster"
+    WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\AutoStamp" \
+                 "UninstallString" "$\"$INSTDIR\uninstall.exe$\""
 
     ; Add a value
     EnVar::AddValue "path" "$INSTDIR\poppler\bin"
@@ -55,5 +59,6 @@ Section "uninstall"
     EnVar::DeleteValue "PATH" "$INSTDIR\poppler\bin"
     Pop $0
     DetailPrint "EnVar::DeleteValue returned=|$0|"
+    DeleteRegKey HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\AutoStamp"
 # uninstaller section end
 SectionEnd
