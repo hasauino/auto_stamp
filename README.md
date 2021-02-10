@@ -13,6 +13,22 @@ Auto Stamp is a desktop application that can be used to stamp all documents in a
 
 # Installation
 
+You can run the application from source, or download it as executable
+
+## From source
+
+- Install requirements:
+
+```
+pip install -r requirements.txt
+```
+
+- Run the app:
+
+```
+python gui.py 
+```
+
 ## Windows
 
 - Download the [installer](https://github.com/hasauino/auto_stamp/releases/download/v0.0.2/AutoStamp_win_installer.exe).
