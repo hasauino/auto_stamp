@@ -35,9 +35,9 @@ python gui.py
 
 ## Ubuntu
 
-- Download the [executable (binary)](https://github.com/hasauino/auto_stamp/releases/download/v0.0.2/AutoStamp_ubuntu) file.
+- Download the [executable (binary)](https://github.com/hasauino/auto_stamp/releases/download/v0.0.2/AutoStamp_ubuntu) file. (tested on Ubuntu 16).
 
-- There is also a [tarball file](https://github.com/hasauino/auto_stamp/releases/download/v0.0.2/AutoStamp_Ubuntu20.tar.xz), you can uncompress, navigate into it, and run the app:
+- There is also a [tarball file](https://github.com/hasauino/auto_stamp/releases/download/v0.0.2/AutoStamp_Ubuntu20.tar.xz) (tested on Ubuntu 20). You can uncompress, navigate into it, and run the app:
 
   ```
   ./AutoStamp
