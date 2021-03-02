@@ -92,6 +92,10 @@ section "install"
 	WriteRegDWORD HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APPNAME}" "NoRepair" 1
 	# Set the INSTALLSIZE constant (!defined at the top of this script) so Add/Remove Programs can accurately report the size
 	WriteRegDWORD HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APPNAME}" "EstimatedSize" ${INSTALLSIZE}
+
+	# Add poppler bin to PATH varaible
+	EnVar::AddValue "PATH" "$INSTDIR\poppler\bin"
+
 sectionEnd
  
 # Uninstaller
@@ -107,6 +111,9 @@ function un.onInit
 functionEnd
  
 section "uninstall"
+	# Delete poppler bin from path
+	EnVar::DeleteValue "PATH" "$INSTDIR\poppler\bin"
+	
 	# Remove Desktop shortcut
 	Delete "$DESKTOP\AutoStamp.lnk"
 	# Remove Start Menu launcher
@@ -126,4 +133,5 @@ section "uninstall"
  
 	# Try to remove the install directory - this will only happen if it is empty
 	RMDir /R /REBOOTOK "$INSTDIR"
+
 sectionEnd
